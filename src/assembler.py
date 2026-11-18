@@ -96,7 +96,6 @@ def _read_field(
     _check_range(value, field, number)
     return value
 
-
 def _check_range(
     value: int,
     field: FieldSpec,
