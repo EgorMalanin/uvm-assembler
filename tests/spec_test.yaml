@@ -1,0 +1,16 @@
+program:
+  - op: load_const
+    const: 194
+    addr: 6
+
+  - op: read_mem
+    dst_reg: 4
+    src_reg: 6
+
+  - op: write_mem
+    src_reg: 1
+    addr: 632
+
+  - op: bit_not
+    dst_addr: 219
+    src_addr: 510

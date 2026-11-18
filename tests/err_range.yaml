@@ -1,0 +1,4 @@
+program:
+  - op: load_const
+    const: 600
+    addr: 6

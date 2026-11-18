@@ -1,0 +1,3 @@
+program:
+  - op: load_const
+    const: 194

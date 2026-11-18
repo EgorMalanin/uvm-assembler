@@ -1,0 +1,20 @@
+program:
+  - op: load_const
+    const: 15
+    addr: 0
+
+  - op: write_mem
+    src_reg: 0
+    addr: 100
+
+  - op: bit_not
+    src_addr: 100
+    dst_addr: 200
+
+  - op: load_const
+    const: 200
+    addr: 1
+
+  - op: read_mem
+    dst_reg: 2
+    src_reg: 1
