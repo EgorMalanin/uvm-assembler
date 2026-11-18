@@ -15,3 +15,10 @@ class StructureError(AssemblerError):
 
 class InstructionError(AssemblerError):
     """Ошибка отдельной инструкции программы."""
+
+class EncodingError(AssemblerError):
+    """Ошибка формирования машинного кода."""
+
+
+class OutputFileError(AssemblerError):
+    """Ошибка записи двоичного файла."""

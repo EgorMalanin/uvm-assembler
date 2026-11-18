@@ -8,3 +8,4 @@ tests/actual_ir.txt
 .idea/
 .vscode/
 *.zip
+tests/actual_bytes.txt

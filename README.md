@@ -227,3 +227,27 @@ python src\main.py tests\demo_not.yaml -o build\demo.bin
 6. Все тесты сразу
 .\tests\test_stage1.bat
 
+ЭТАП 2
+
+1. Байтовый вывод тестов спецификации
+python src\main.py tests\spec_test.yaml -t
+
+2. Автосравнение с эталоном (ожидаем "no differences encountered")
+cmd /c "python src\main.py tests\spec_test.yaml -t > tests\actual_bytes.txt"
+C:\Windows\System32\fc.exe tests\expected_bytes.txt tests\actual_bytes.txt
+
+3. Запись двоичного файла + число команд
+python src\main.py tests\spec_test.yaml -o build\spec_test.bin
+
+4. Проверка размера файла (должно быть 24 байта = 4 x 6)
+dir build\spec_test.bin
+
+5. Hex-дамп файла niezależным инструментом
+certutil -dump build\spec_test.bin
+
+6. Все тесты этапа
+.\tests\test_stage2.bat
+
+7. Регрессия Этапа 1 (ошибки разбора)
+.\tests\test_stage1.bat
+

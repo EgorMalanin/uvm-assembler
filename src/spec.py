@@ -16,7 +16,14 @@ OP_LOAD_CONST = 'load_const'
 OP_READ_MEM = 'read_mem'
 OP_WRITE_MEM = 'write_mem'
 OP_BIT_NOT = 'bit_not'
+FIELD_A = 'A'
+FIELD_B = 'B'
+FIELD_C = 'C'
 
+BYTE_ORDER = 'little'
+BYTE_FORMAT = '0x{:02X}'
+BYTE_SEPARATOR = ', '
+FIRST_BYTE = 0
 
 class FieldSpec(NamedTuple):
     """

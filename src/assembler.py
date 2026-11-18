@@ -4,13 +4,18 @@
 from typing import Any, Dict, List
 
 from errors import InstructionError
-from spec import MIN_FIELD_VALUE, OP_KEY, SPECS, FieldSpec, field_limit
+from spec import (
+    FIELD_A,
+    FIELD_B,
+    FIELD_C,
+    MIN_FIELD_VALUE,
+    OP_KEY,
+    SPECS,
+    FieldSpec,
+    field_limit,
+)
 
 FIRST_INSTRUCTION = 1
-FIELD_A = 'A'
-FIELD_B = 'B'
-FIELD_C = 'C'
-
 
 def assemble(
     instructions: List[Dict[str, Any]]

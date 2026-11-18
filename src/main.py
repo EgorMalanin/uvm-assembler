@@ -6,8 +6,10 @@ import sys
 from typing import List, Optional
 
 from assembler import assemble
+from binary_writer import write_binary
+from byte_view import format_machine_code
+from encoder import encode_program
 from errors import AssemblerError
-from ir_view import format_ir
 from loader import load_source
 
 EXIT_SUCCESS = 0
@@ -21,7 +23,7 @@ def build_parser() -> argparse.ArgumentParser:
     """
     parser = argparse.ArgumentParser(
         prog='uvm-asm',
-        description='Ассемблер УВМ, вариант 13, этап 1',
+        description='Ассемблер УВМ, вариант 13, этап 2',
     )
     parser.add_argument(
         'source',
@@ -35,25 +37,27 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         '-t', '--test',
         action='store_true',
-        help='режим тестирования: вывод промежуточного кода',
+        help='режим тестирования: вывод машинного кода в байтах',
     )
     return parser
 
 
 def run(args: argparse.Namespace) -> int:
     """
-    Выполняет трансляцию исходной программы.
+    Выполняет ассемблирование программы.
     """
     program = assemble(load_source(args.source))
+    machine_code = encode_program(program)
 
     if args.test:
-        print(format_ir(program))
+        print(format_machine_code(machine_code))
         return EXIT_SUCCESS
 
+    write_binary(args.output, machine_code)
     print(f"Source: {args.source}")
     print(f"Output: {args.output}")
     print(f"Instructions: {len(program)}")
-    print("Intermediate representation built successfully")
+    print(f"Bytes: {len(machine_code)}")
     return EXIT_SUCCESS
 
 
